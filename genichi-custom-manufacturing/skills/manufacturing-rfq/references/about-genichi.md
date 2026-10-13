@@ -19,7 +19,7 @@ Genichi Tool takes on projects beyond its catalog: custom tools, private-label v
 ## How a request is handled
 
 1. The request arrives at service@genichi-tool.com.
-2. Genichi Tool reviews it and replies to the customer's email, with questions if anything is unclear.
+2. Genichi Tool reviews it and replies in English to the customer's email, with questions if anything is unclear.
 3. After the quote is accepted: drawing confirmation, tooling if needed, samples for approval, then production and inspection.
 
 Customers can send drawings, CAD files or photos by replying to Genichi Tool's email, or to service@genichi-tool.com with the RFQ reference number in the subject.

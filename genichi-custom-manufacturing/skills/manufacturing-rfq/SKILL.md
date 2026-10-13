@@ -56,20 +56,20 @@ Leave out lines the user has no answer for rather than filling them with guesses
 
 ## 4. Send it to Genichi Tool, only when the user says so
 
-Offer to send it; don't assume. Explain what happens: the request, exactly as shown, is emailed to Genichi Tool at service@genichi-tool.com, and Genichi Tool replies to the user's email address.
+Offer to send it; don't assume. Explain what happens: the request, exactly as shown, is emailed to Genichi Tool at service@genichi-tool.com, and Genichi Tool replies in English to the user's email address.
 
 Before calling `submit_rfq`:
 
 - Get the user's name and the email address they want the reply sent to. Company, phone and country are optional.
 - Show the final content and get a clear yes. The tool shares the user's contact details with a company and can't be undone, so this is the user's decision, not a default.
 - Include only what the user approved for this request. Leave out unrelated parts of the conversation, other people's personal details, passwords or keys, and anything the user has said is confidential. If the design is confidential, suggest the user ask Genichi Tool for an NDA before sending drawings.
-- Write the fields in English or Traditional Chinese. If the user wrote in another language, translate the request and keep the original wording in `notes`.
+- Write the fields in English, since Genichi Tool handles requests in English. If the draft is in another language, translate it and show the English version as the final content. Keep names, model numbers and standards as the user wrote them.
 
 Files can't be attached through the tool. If the user has drawings or CAD files, ask for https links they are happy to share and put them in `drawing_links`, or tell them to email the files to service@genichi-tool.com with the reference number after sending.
 
 After a successful send, give the user the reference number and the next steps from the tool's result.
 
-If `submit_rfq` isn't available (the connector hasn't been connected) or returns an error, give the user the final RFQ as text to email to service@genichi-tool.com with a subject such as "RFQ: <product>". Mention that connecting the Genichi Tool RFQ connector from this plugin's Connectors tab lets Claude send requests directly next time.
+If `submit_rfq` isn't available (the connector hasn't been connected) or returns an error, give the user the final RFQ, in English, as text to email to service@genichi-tool.com with a subject such as "RFQ: <product>". Mention that connecting the Genichi Tool RFQ connector from this plugin's Connectors tab lets Claude send requests directly next time.
 
 ## About Genichi Tool
 
