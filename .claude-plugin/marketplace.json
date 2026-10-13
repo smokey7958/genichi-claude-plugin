@@ -1,0 +1,15 @@
+{
+  "name": "genichi-tool",
+  "description": "Claude plugins from Genichi Tool Co., Ltd., a hand tool maker in Taichung, Taiwan.",
+  "owner": {
+    "name": "Genichi Tool Co., Ltd.",
+    "email": "service@genichi-tool.com"
+  },
+  "plugins": [
+    {
+      "name": "genichi-custom-manufacturing",
+      "source": "./genichi-custom-manufacturing",
+      "description": "Turn a product idea or part into a complete manufacturing RFQ and, when you choose, send it to Genichi Tool Co., Ltd. (Taichung, Taiwan) for a quote."
+    }
+  ]
+}

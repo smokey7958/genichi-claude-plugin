@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "genichi-rfq": {
+      "type": "http",
+      "url": "https://REPLACE-AT-DEPLOY.invalid/mcp"
+    }
+  }
+}

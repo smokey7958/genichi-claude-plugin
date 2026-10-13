@@ -1,0 +1,9 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+server/outbox/
+server/_dl/
+.DS_Store
+Thumbs.db
+desktop.ini
