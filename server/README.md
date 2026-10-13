@@ -28,6 +28,14 @@ git subtree push --prefix server https://git.heroku.com/genichi-rfq.git main
 
 The mailbox sends to itself: `RFQ_TO` and `RFQ_FROM` default to service@genichi-tool.com, and port 465 uses implicit TLS (`RFQ_SMTP_SSL=1`, the default). Set `RFQ_SMTP_PASSWORD` in the Heroku dashboard (Settings → Config Vars) rather than on the command line, so it stays out of shell history, and update it whenever the mailbox password changes.
 
-Then set `RFQ_ALLOWED_HOSTS` to the app's hostname, put `https://<hostname>/mcp` in the plugin's `.mcp.json`, and check the endpoint with the MCP Inspector or as a custom connector in Claude.
+The server is published at `rfq.genichi-tool.com`, so the connector's domain matches the company's:
+
+```bash
+heroku domains:add rfq.genichi-tool.com -a genichi-rfq     # prints the DNS target for a CNAME record named rfq
+heroku certs:auto:enable -a genichi-rfq
+heroku config:set -a genichi-rfq RFQ_ALLOWED_HOSTS=<app>.herokuapp.com,rfq.genichi-tool.com
+```
+
+Once the CNAME resolves and `heroku certs:auto` shows the certificate as issued, the plugin's `.mcp.json` URL, `https://rfq.genichi-tool.com/mcp`, works. Check the endpoint with the MCP Inspector or as a custom connector in Claude.
 
 To send through an existing n8n SMTP credential instead of storing SMTP details here, set `RFQ_DELIVERY=webhook`, `RFQ_WEBHOOK_URL` and `RFQ_WEBHOOK_SECRET`, and have the n8n workflow check the `X-Genichi-Secret` header before sending the `subject` and `body` fields to service@genichi-tool.com.

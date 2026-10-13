@@ -87,7 +87,7 @@ async def check(outbox: Path) -> None:
 
 def main() -> None:
     outbox = Path(tempfile.mkdtemp(prefix="rfq-outbox-"))
-    env = dict(os.environ, RFQ_DELIVERY="file", RFQ_OUTBOX=str(outbox), PORT=str(PORT))
+    env = dict(os.environ, RFQ_DELIVERY="file", RFQ_OUTBOX=str(outbox), PORT=str(PORT), RFQ_ALLOWED_HOSTS="")
     proc = subprocess.Popen([sys.executable, str(Path(__file__).with_name("genichi_rfq_server.py"))], env=env)
     try:
         for _ in range(50):

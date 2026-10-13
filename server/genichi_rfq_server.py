@@ -265,9 +265,9 @@ async def submit_rfq(
     contact_email = contact_email.strip()
     if not EMAIL_RE.match(contact_email):
         raise ToolError("contact_email is not a valid email address. Ask the user for the address Genichi should reply to.")
-    for link in drawing_links or []:
-        if not link.startswith("https://"):
-            raise ToolError(f"drawing_links must be https URLs; got {link[:60]!r}.")
+    for n, link in enumerate(drawing_links or [], 1):
+        if not link.startswith("https://"):  # tool errors are logged, so name the link by position, not content
+            raise ToolError(f"drawing_links must be https URLs; link {n} is not.")
 
     ip = _client_ip(ctx)
     if not (
