@@ -337,4 +337,6 @@ def create_app():
 
 
 if __name__ == "__main__":
-    uvicorn.run(create_app(), host="0.0.0.0", port=int(os.environ.get("PORT", "8000")), proxy_headers=True)
+    # One worker, whatever WEB_CONCURRENCY says (Heroku's Python buildpack sets it): the rate limits
+    # live in this process's memory, and uvicorn can only start workers from an import string.
+    uvicorn.run(create_app(), host="0.0.0.0", port=int(os.environ.get("PORT", "8000")), proxy_headers=True, workers=1)
