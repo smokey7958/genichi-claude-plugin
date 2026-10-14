@@ -8,6 +8,7 @@ and rate-limit errors. Nothing is emailed.
 """
 
 import asyncio
+import json
 import os
 import shutil
 import subprocess
@@ -85,6 +86,31 @@ async def check(outbox: Path) -> None:
         print("rate limit ok after", sum(not r.is_error for r in results) + 1, "sends for one address")
 
 
+def call_raw(args: dict, forwarded_for: str) -> dict:
+    """tools/call over plain HTTP, with the X-Forwarded-For header a hosting router adds."""
+    body = {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "submit_rfq", "arguments": args}}
+    req = urllib.request.Request(
+        URL,
+        data=json.dumps(body).encode(),
+        headers={
+            "Content-Type": "application/json",
+            "Accept": "application/json, text/event-stream",
+            "X-Forwarded-For": forwarded_for,
+        },
+    )
+    with urllib.request.urlopen(req, timeout=10) as resp:
+        return json.loads(resp.read())["result"]
+
+
+def check_ip_limit() -> None:
+    # All claude.ai users arrive from Anthropic's range, so the per-IP limit skips it; other addresses keep it.
+    shared = [call_raw(dict(SAMPLE, contact_email=f"claude{i}@example.com"), "160.79.104.10") for i in range(7)]
+    assert not any(r["isError"] for r in shared), shared
+    other = [call_raw(dict(SAMPLE, contact_email=f"direct{i}@example.com"), "198.51.100.7") for i in range(6)]
+    assert [r["isError"] for r in other] == [False] * 5 + [True], other  # RFQ_MAX_PER_IP_HOUR defaults to 5
+    print("per-IP limit skips Anthropic's range and still applies to other addresses")
+
+
 def main() -> None:
     outbox = Path(tempfile.mkdtemp(prefix="rfq-outbox-"))
     env = dict(os.environ, RFQ_DELIVERY="file", RFQ_OUTBOX=str(outbox), PORT=str(PORT), RFQ_ALLOWED_HOSTS="")
@@ -97,6 +123,7 @@ def main() -> None:
             except OSError:
                 time.sleep(0.2)
         asyncio.run(check(outbox))
+        check_ip_limit()
         print("ALL CHECKS PASSED")
     finally:
         proc.terminate()

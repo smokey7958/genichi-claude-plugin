@@ -28,11 +28,15 @@ Environment
     RFQ_ALLOWED_HOSTS           comma-separated Host headers to accept; empty turns host checking off
     RFQ_MAX_PER_EMAIL_HOUR      submissions per contact email per hour          default 3
     RFQ_MAX_PER_IP_HOUR         submissions per client IP per hour              default 5
+    RFQ_SHARED_IPS              networks the per-IP limit skips, comma-separated
+                                (claude.ai connector calls all come from Anthropic's outbound range)
+                                                                                default 160.79.104.0/21
     RFQ_MAX_PER_DAY             submissions per day in total                    default 100
 """
 
 from __future__ import annotations
 
+import ipaddress
 import json
 import logging
 import os
@@ -68,6 +72,11 @@ OUTBOX = Path(os.environ.get("RFQ_OUTBOX", Path(__file__).with_name("outbox")))
 MAX_PER_EMAIL_HOUR = int(os.environ.get("RFQ_MAX_PER_EMAIL_HOUR", "3"))
 MAX_PER_IP_HOUR = int(os.environ.get("RFQ_MAX_PER_IP_HOUR", "5"))
 MAX_PER_DAY = int(os.environ.get("RFQ_MAX_PER_DAY", "100"))
+# claude.ai calls connectors from Anthropic's outbound range (https://platform.claude.com/docs/en/api/ip-addresses),
+# so every claude.ai user shares those addresses and a per-IP limit there would be one limit for all of them.
+SHARED_NETWORKS = [
+    ipaddress.ip_network(n.strip()) for n in os.environ.get("RFQ_SHARED_IPS", "160.79.104.0/21").split(",") if n.strip()
+]
 REPO_URL = "https://github.com/smokey7958/genichi-claude-plugin"
 
 EMAIL_RE = re.compile(r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$")
@@ -112,6 +121,13 @@ def _client_ip(ctx: Context | None) -> str:
     headers = (ctx.headers if ctx else None) or {}
     forwarded = headers.get("x-forwarded-for", "")
     return forwarded.split(",")[-1].strip() or "unknown"
+
+
+def _shared_ip(ip: str) -> bool:
+    try:
+        return any(ipaddress.ip_address(ip) in net for net in SHARED_NETWORKS)
+    except ValueError:  # "unknown"
+        return False
 
 
 # ---------------------------------------------------------------- email
@@ -272,7 +288,7 @@ async def submit_rfq(
     ip = _client_ip(ctx)
     if not (
         _allow("day", MAX_PER_DAY, 86400)
-        and _allow(f"ip:{ip}", MAX_PER_IP_HOUR, 3600)
+        and (_shared_ip(ip) or _allow(f"ip:{ip}", MAX_PER_IP_HOUR, 3600))
         and _allow(f"email:{contact_email.lower()}", MAX_PER_EMAIL_HOUR, 3600)
     ):
         raise ToolError(

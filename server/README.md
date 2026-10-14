@@ -4,7 +4,7 @@ The remote MCP server behind the `genichi-custom-manufacturing` plugin. It expos
 
 - Transport: streamable HTTP at `/mcp`, stateless, JSON responses
 - Tool annotations: `readOnlyHint: false`, `destructiveHint: false`, `idempotentHint: false`, `openWorldHint: true`
-- No authentication: anyone can submit an RFQ, as with a contact form. Each email goes only to `RFQ_TO`, and submissions are rate limited per contact email, per client IP and per day
+- No authentication: anyone can submit an RFQ, as with a contact form. Each email goes only to `RFQ_TO`, and submissions are rate limited per contact email, per client IP and per day. The per-IP limit skips Anthropic's outbound range (`RFQ_SHARED_IPS`), because every claude.ai user's connector calls come from it
 - Built on the official MCP Python SDK (`mcp` 2.x)
 
 ## Test locally
