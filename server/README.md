@@ -6,6 +6,7 @@ The remote MCP server behind the `genichi-custom-manufacturing` plugin. It expos
 - Tool annotations: `readOnlyHint: false`, `destructiveHint: false`, `idempotentHint: false`, `openWorldHint: true`
 - No authentication: anyone can submit an RFQ, as with a contact form. Each email goes only to `RFQ_TO`, and submissions are rate limited per contact email, per client IP and per day. The per-IP limit skips Anthropic's outbound range (`RFQ_SHARED_IPS`), because every claude.ai user's connector calls come from it
 - Built on the official MCP Python SDK (`mcp` 2.x)
+- Serves Genichi Tool's logo at `/favicon.ico` and `/icon.png` (from `static/`), which Claude shows next to the connector
 
 ## Test locally
 
@@ -15,7 +16,7 @@ python -m venv .venv
 .venv/Scripts/python test_server.py
 ```
 
-`test_server.py` starts the server with `RFQ_DELIVERY=file`, which writes `.eml` files instead of sending mail, and checks the tool list, annotations, one submission, input validation and the rate limit.
+`test_server.py` starts the server with `RFQ_DELIVERY=file`, which writes `.eml` files instead of sending mail, and checks the tool list, annotations, one submission, input validation, the rate limit and the icon routes.
 
 ## Deploy to Heroku
 

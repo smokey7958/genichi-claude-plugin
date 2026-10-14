@@ -61,7 +61,7 @@ from mcp.server.transport_security import TransportSecuritySettings
 from mcp_types import ToolAnnotations
 from pydantic import BaseModel, Field
 from starlette.requests import Request
-from starlette.responses import PlainTextResponse
+from starlette.responses import FileResponse, HTMLResponse
 
 log = logging.getLogger("genichi-rfq")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -336,12 +336,29 @@ async def submit_rfq(
 
 
 # ---------------------------------------------------------------- HTTP
+# Claude and the connector directory show the favicon of the server's site next to the connector.
+STATIC = Path(__file__).with_name("static")
+ICON_CACHE = {"Cache-Control": "public, max-age=86400"}
+
+
 @server.custom_route("/", methods=["GET"])
-async def home(_: Request) -> PlainTextResponse:
-    return PlainTextResponse(
-        "Genichi Tool RFQ MCP server. MCP endpoint: /mcp (streamable HTTP).\n"
-        f"Source, privacy and documentation: {REPO_URL}\n"
+async def home(_: Request) -> HTMLResponse:
+    return HTMLResponse(
+        '<!doctype html><html><head><meta charset="utf-8"><title>Genichi Tool RFQ</title>'
+        '<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/icon.png">'
+        "</head><body><pre>Genichi Tool RFQ MCP server. MCP endpoint: /mcp (streamable HTTP).\n"
+        f'Source, privacy and documentation: <a href="{REPO_URL}">{REPO_URL}</a></pre></body></html>\n'
     )
+
+
+@server.custom_route("/favicon.ico", methods=["GET"])
+async def favicon(_: Request) -> FileResponse:
+    return FileResponse(STATIC / "favicon.ico", media_type="image/x-icon", headers=ICON_CACHE)
+
+
+@server.custom_route("/icon.png", methods=["GET"])
+async def icon(_: Request) -> FileResponse:
+    return FileResponse(STATIC / "icon.png", media_type="image/png", headers=ICON_CACHE)
 
 
 def create_app():

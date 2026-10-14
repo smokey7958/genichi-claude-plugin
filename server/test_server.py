@@ -111,6 +111,15 @@ def check_ip_limit() -> None:
     print("per-IP limit skips Anthropic's range and still applies to other addresses")
 
 
+def check_icons() -> None:
+    for path, ctype in (("/favicon.ico", "image/x-icon"), ("/icon.png", "image/png")):
+        with urllib.request.urlopen(f"http://127.0.0.1:{PORT}{path}", timeout=5) as resp:
+            assert resp.headers["Content-Type"] == ctype and resp.read(), (path, resp.headers["Content-Type"])
+    with urllib.request.urlopen(f"http://127.0.0.1:{PORT}/", timeout=5) as resp:
+        assert 'href="/favicon.ico"' in resp.read().decode()
+    print("favicon and icon served")
+
+
 def main() -> None:
     outbox = Path(tempfile.mkdtemp(prefix="rfq-outbox-"))
     env = dict(os.environ, RFQ_DELIVERY="file", RFQ_OUTBOX=str(outbox), PORT=str(PORT), RFQ_ALLOWED_HOSTS="")
@@ -124,6 +133,7 @@ def main() -> None:
                 time.sleep(0.2)
         asyncio.run(check(outbox))
         check_ip_limit()
+        check_icons()
         print("ALL CHECKS PASSED")
     finally:
         proc.terminate()
