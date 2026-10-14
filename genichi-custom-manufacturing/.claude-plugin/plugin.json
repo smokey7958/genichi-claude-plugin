@@ -12,5 +12,7 @@
   "repository": "https://github.com/smokey7958/genichi-claude-plugin",
   "license": "MIT",
   "privacyPolicyUrl": "https://github.com/smokey7958/genichi-claude-plugin/blob/main/genichi-custom-manufacturing/PRIVACY.md",
+  "documentationUrl": "https://github.com/smokey7958/genichi-claude-plugin/blob/main/genichi-custom-manufacturing/README.md",
+  "supportUrl": "mailto:service@genichi-tool.com",
   "keywords": ["manufacturing", "rfq", "quotation", "oem", "odm", "custom-parts", "metal-products", "wood-products", "plastic-products", "hand-tools", "sourcing", "taiwan"]
 }
