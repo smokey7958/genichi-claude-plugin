@@ -7,7 +7,7 @@ Need something made? This plugin helps Claude turn a product idea, sketch, photo
 - **Shapes the request.** Claude asks what the item has to do, then fills in what a factory needs to quote it: quantity, critical dimensions, material, finish and heat treatment, packaging, target price, timing and destination. It suggests a process route (CNC machining, forging, stamping, casting, molding, laser engraving and more) and flags design choices that drive cost. The finished RFQ is useful with any supplier.
 - **Sends it, only if you say so.** Claude shows you the final request. After you confirm, it emails the request to Genichi Tool at service@genichi-tool.com and gives you a reference number. Genichi Tool replies to the email address you provide.
 
-Genichi Tool makes hand tools (pliers, cutters, wire strippers, screwdrivers, sockets, tweezers), tool sets and laser-engraved products, and takes on custom, private-label and OEM/ODM projects. Every request is reviewed, including unusual ones, and answered with feasibility, process options and a quote.
+Genichi Tool makes hand tools (pliers, cutters, wire strippers, screwdrivers, sockets, tweezers), tool sets and laser-engraved products, and manufactures almost any metal, wood or plastic product to order: custom, private-label and OEM/ODM projects. Every request is reviewed, including unusual ones, and answered with feasibility, process options and a quote.
 
 ## Components
 

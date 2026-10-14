@@ -14,7 +14,7 @@
 
 ## Custom and OEM/ODM work
 
-Genichi Tool takes on projects beyond its catalog: custom tools, private-label versions of existing tools, parts made to a customer's drawing, and development from a sample or an idea. The team reviews every request, including unusual ones, and replies with feasibility, suggested process options and a quote. Genichi Tool coordinates the whole process chain within central Taiwan's tool-making cluster: forging, machining, heat treatment, surface finishing, assembly, marking and packaging.
+Genichi Tool takes on projects well beyond hand tools: OEM/ODM manufacturing of almost any metal, wood or plastic product, including custom tools, private-label versions of existing products, parts made to a customer's drawing, and development from a sample or an idea. The team reviews every request, including unusual ones, and replies with feasibility, suggested process options and a quote. Genichi Tool coordinates the whole process chain within central Taiwan's manufacturing cluster: forging, machining, heat treatment, surface finishing, woodworking, plastic molding, assembly, marking and packaging.
 
 ## How a request is handled
 
