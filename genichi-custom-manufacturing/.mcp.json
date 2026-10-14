@@ -2,7 +2,7 @@
   "mcpServers": {
     "genichi-rfq": {
       "type": "http",
-      "url": "https://rfq.genichi-tool.com/mcp"
+      "url": "https://genichi-rfq-9b2b82c13f70.herokuapp.com/mcp"
     }
   }
 }

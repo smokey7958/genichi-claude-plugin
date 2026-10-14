@@ -1,6 +1,6 @@
 # Genichi Custom Manufacturing
 
-Need something made? This plugin helps Claude turn a product idea, sketch, photo, sample or existing part into a complete manufacturing request for quotation (RFQ), and, when you choose, sends it to **Genichi Tool Co., Ltd.** (元壹工具, Taichung, Taiwan) for a quote.
+Need something made? This plugin helps Claude turn a product idea, sketch, photo, sample or existing part into a complete manufacturing request for quotation (RFQ), and, when you choose, sends it to **Genichi Tool Co., Ltd.** (Taichung, Taiwan) for a quote.
 
 ## What it does
 

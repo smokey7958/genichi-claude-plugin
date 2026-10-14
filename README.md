@@ -19,4 +19,4 @@ In claude.ai, the desktop and mobile apps, and Cowork, add the plugin from the d
 
 ## About Genichi Tool
 
-Genichi Tool Co., Ltd. (元壹工具有限公司) makes hand tools in Taichung, Taiwan, and takes on custom and OEM/ODM manufacturing. Contact: service@genichi-tool.com.
+Genichi Tool Co., Ltd. makes hand tools in Taichung, Taiwan, and takes on custom and OEM/ODM manufacturing. Contact: service@genichi-tool.com.
