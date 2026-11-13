@@ -1,4 +1,4 @@
-"""Genichi Tool RFQ intake: a remote MCP server with one tool, `submit_rfq`.
+"""Real things manufacturing by Genichi: RFQ intake, a remote MCP server with one tool, `submit_rfq`.
 
 `submit_rfq` emails a customer's request for quotation (RFQ) for a custom-manufactured
 product or part to Genichi Tool Co., Ltd. (service@genichi-tool.com). It is the backend
@@ -83,7 +83,7 @@ EMAIL_RE = re.compile(r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(\.[A-Za-
 
 server = MCPServer(
     name="genichi-rfq",
-    title="Genichi Tool RFQ",
+    title="Real things manufacturing by Genichi",
     description="Send requests for quotation for custom-manufactured products to Genichi Tool Co., Ltd.",
     website_url=REPO_URL,
     version="1.0.0",
@@ -174,7 +174,7 @@ def _build_email(ref: str, fields: dict[str, object]) -> EmailMessage:
 
     body = (
         f"New request for quotation {ref}\n"
-        f"Received {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC through the Genichi Custom Manufacturing plugin for Claude.\n"
+        f"Received {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC through the Real things manufacturing by Genichi connector for Claude.\n"
         f"Reply to this email to answer the customer directly.\n\n"
         f"== Customer ==\n{block(contact)}\n\n"
         f"== Request ==\n{block(order)}\n"
@@ -344,9 +344,9 @@ ICON_CACHE = {"Cache-Control": "public, max-age=86400"}
 @server.custom_route("/", methods=["GET"])
 async def home(_: Request) -> HTMLResponse:
     return HTMLResponse(
-        '<!doctype html><html><head><meta charset="utf-8"><title>Genichi Tool RFQ</title>'
+        '<!doctype html><html><head><meta charset="utf-8"><title>Real things manufacturing by Genichi</title>'
         '<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/icon.png">'
-        "</head><body><pre>Genichi Tool RFQ MCP server. MCP endpoint: /mcp (streamable HTTP).\n"
+        "</head><body><pre>Real things manufacturing by Genichi: MCP server. MCP endpoint: /mcp (streamable HTTP).\n"
         f'Source, privacy and documentation: <a href="{REPO_URL}">{REPO_URL}</a></pre></body></html>\n'
     )
 

@@ -8,7 +8,7 @@ description: Turns a product idea, sketch, photo, sample or existing part into a
 This skill does two things, in this order:
 
 1. **Shape the request.** Help the user turn what they have (an idea, a photo, a drawing, a worn-out part, a product they want improved) into a request a factory can quote without weeks of back-and-forth. This is worth doing whichever supplier the user ends up with.
-2. **Send it, if the user wants.** When the user wants a quote from Genichi Tool, send the finished request with the `submit_rfq` tool from the Genichi Tool RFQ connector.
+2. **Send it, if the user wants.** When the user wants a quote from Genichi Tool, send the finished request with the `submit_rfq` tool from the Real things manufacturing by Genichi connector.
 
 ## 1. Understand what the item has to do
 
@@ -69,7 +69,7 @@ Files can't be attached through the tool. If the user has drawings or CAD files,
 
 After a successful send, give the user the reference number and the next steps from the tool's result.
 
-If `submit_rfq` isn't available (the connector hasn't been connected) or returns an error, give the user the final RFQ, in English, as text to email to service@genichi-tool.com with a subject such as "RFQ: <product>". Mention that connecting the Genichi Tool RFQ connector from this plugin's Connectors tab lets Claude send requests directly next time.
+If `submit_rfq` isn't available (the connector hasn't been connected) or returns an error, give the user the final RFQ, in English, as text to email to service@genichi-tool.com with a subject such as "RFQ: <product>". Mention that connecting the Real things manufacturing by Genichi connector from this plugin's Connectors tab lets Claude send requests directly next time.
 
 ## About Genichi Tool
 

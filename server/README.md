@@ -1,4 +1,4 @@
-# Genichi Tool RFQ MCP server
+# Real things manufacturing by Genichi: MCP server
 
 The remote MCP server behind the `genichi-custom-manufacturing` plugin. It exposes one tool, `submit_rfq`, which emails a request for quotation to service@genichi-tool.com. `genichi_rfq_server.py` documents what it sends and what it keeps, and every setting.
 

@@ -1,8 +1,8 @@
-# Privacy policy: Genichi Custom Manufacturing plugin and Genichi Tool RFQ connector
+# Privacy policy: Real things manufacturing by Genichi (plugin and connector)
 
-Last updated: 2026-09-27
+Last updated: 2026-11-13
 
-This policy covers the Genichi Custom Manufacturing plugin for Claude and the Genichi Tool RFQ connector (the `genichi-rfq` MCP server), operated by Genichi Tool Co., Ltd. (元壹工具有限公司), Daya District, Taichung, Taiwan. Contact: service@genichi-tool.com.
+This policy covers the Real things manufacturing by Genichi plugin for Claude and the connector of the same name (the `genichi-rfq` MCP server), operated by Genichi Tool Co., Ltd. (元壹工具有限公司), Daya District, Taichung, Taiwan. Contact: service@genichi-tool.com.
 
 ## What we collect
 

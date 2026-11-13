@@ -1,4 +1,4 @@
-# Genichi Custom Manufacturing
+# Real things manufacturing by Genichi
 
 Need something made? This plugin helps Claude turn a product idea, sketch, photo, sample or existing part into a complete manufacturing request for quotation (RFQ), and, when you choose, sends it to **Genichi Tool Co., Ltd.** (Taichung, Taiwan) for a quote.
 
@@ -35,11 +35,11 @@ Describe what you want made, for example:
 - "Can you help me get a quote for custom pliers with our logo on the handle?"
 - "We want a private-label screwdriver set for our shop."
 
-In claude.ai, the desktop and mobile apps, and Cowork, connect the **Genichi Tool RFQ** connector from the plugin's **Connectors** tab so Claude can send requests for you. Without it, Claude still prepares the RFQ and gives you the text to email yourself.
+In claude.ai, the desktop and mobile apps, and Cowork, connect the **Real things manufacturing by Genichi** connector from the plugin's **Connectors** tab so Claude can send requests for you. Without it, Claude still prepares the RFQ and gives you the text to email yourself.
 
 ## Troubleshooting
 
-- **Claude drafts the RFQ but doesn't offer to send it:** connect the Genichi Tool RFQ connector from the plugin's Connectors tab, then ask Claude to send the request.
+- **Claude drafts the RFQ but doesn't offer to send it:** connect the Real things manufacturing by Genichi connector from the plugin's Connectors tab, then ask Claude to send the request.
 - **"Too many requests":** the server limits how many requests one address can send per hour. Wait, or email the RFQ to service@genichi-tool.com directly.
 - **Anything else:** email service@genichi-tool.com.
 

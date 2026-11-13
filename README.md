@@ -1,6 +1,6 @@
 # Genichi Tool plugins for Claude
 
-This repository holds the **Genichi Custom Manufacturing** plugin for Claude and the MCP server it connects to.
+This repository holds the **Real things manufacturing by Genichi** plugin for Claude and the MCP server it connects to.
 
 | Folder | Contents |
 |---|---|

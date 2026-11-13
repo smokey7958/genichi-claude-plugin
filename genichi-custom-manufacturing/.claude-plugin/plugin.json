@@ -1,7 +1,7 @@
 {
   "name": "genichi-custom-manufacturing",
-  "displayName": "Genichi Custom Manufacturing",
-  "version": "1.0.0",
+  "displayName": "Real things manufacturing by Genichi",
+  "version": "1.0.1",
   "description": "Turn a product idea or part into a complete manufacturing request for quotation (process, material, tolerances, quantities) and, when you choose, send it to Genichi Tool Co., Ltd. in Taichung, Taiwan for a quote.",
   "author": {
     "name": "Genichi Tool Co., Ltd.",
